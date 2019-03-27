@@ -1,0 +1,40 @@
+---
+- hosts: jenkins
+  become: yes
+  tasks:
+    - name: install wget
+      yum:
+        name: wget
+        state: latest
+
+    - name: repo for apache-maven
+      get_url:
+        url: http://repos.fedorapeople.org/repos/dchen/apache-maven/epel-apache-maven.repo
+        dest: /etc/yum.repos.d/epel-apache-maven.repo
+
+    - name: install java devel
+      yum:
+        name: java-1.8.0-openjdk-devel
+        state: latest
+
+    - name: install java reg
+      yum:
+        name: java-1.8.0-openjdk
+        state: latest
+
+    - name: install apache-maven
+      yum:
+        name: apache-maven
+        state: latest
+
+    - name: install git
+      yum:
+        name: git
+        state: latest
+
+# TO CHECK ALL IS ISNTALED:
+# wget --version
+# ls /etc/yum.repos.d/
+# java -version
+# mvn --version
+# git --version

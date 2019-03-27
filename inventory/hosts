@@ -1,0 +1,5 @@
+[slave]
+ipaddress
+
+[all:vars]
+ansible_connection=local
